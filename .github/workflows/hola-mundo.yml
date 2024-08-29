@@ -1,0 +1,17 @@
+name: Prueba de github actions
+run-name: workflow de prueba
+on: [push]
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Definir variables
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Instalar nodeJS version 18 
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Ejecutar index
+        run: node index.js
